@@ -1,0 +1,54 @@
+<?php
+require("koneksi.php");
+$id_nya = mysqli_real_escape_string($koneksi, trim($_GET['id']));
+
+$seleksi = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_nya'");
+$data = mysqli_fetch_array($seleksi);
+	$id = mysqli_real_escape_string($koneksi, trim($data['id']));
+	$username = mysqli_real_escape_string($koneksi, trim($data['username']));
+	
+	
+if(isset($_POST['input'])) {
+	
+	
+	
+	
+	
+}
+
+
+
+?>
+
+
+
+<div class="container">
+	<h4 class="text-info"><i class="icon icon-edit"></i> Perbarui Username</h4>
+		<form method="post" name="input" action="" class="orange">
+			<input type="hidden" name="id" value="<?php echo $id; ?>" />	
+				<table class="table table-striped">
+					<tr>
+							<td>Username</td>
+							<td>:</td>
+							<td><input type="text" name="username" class="input-xlarge" value="<?php echo $username; ?>"></td>
+							</tr>
+					<tr>
+							<td colspan="3"></td>
+							</tr>
+					<tr>
+							<td>Password<br /> &lt; Masukkan Password Untuk Konfirmasi Perubahan Username &gt; </td>
+							<td>:</td>
+							<td><input type="password" name="password" class="input-xlarge"></td>
+							</tr>
+
+					<tr>
+							<td></td>
+							<td colspan="2">
+							<input type="submit" name="input" class="btn btn-success" value="Perbarui Username">
+							<a href="home.php?menu=profil-update" class="btn btn-warning">Batal</a>
+							</td>
+							</tr>
+							
+			</table>
+		</form>
+	</div>
