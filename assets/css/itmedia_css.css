@@ -1,0 +1,236 @@
+/*!
+ * Custom CSS of ITMedia
+ * Powered by Bootstrap 2.3.2 (https://getbootstrap.com/2.3.2) 2013
+ * Copyright 2016
+*/
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/* NAVBAR REPAIRING */
+.navbar-inverse .btn-navbar {
+	margin-right: 22px;
+}
+
+.nav > li {
+	padding-left: 11px;
+}
+
+.navbar-inner {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/* SLIDE-SHOW CAROUSEL CUSTOM */
+.carousel {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	
+}
+
+.carousel-control {
+	font-size: 150px;
+	background: none;
+	border: 0px solid #ffffff;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+
+}
+
+.carousel-caption {
+	opacity: .8;
+	text-align: center;
+}
+
+.carousel-caption h2,
+.carousel-caption p {
+	line-height: 20px;
+	color: #CCCCCC;	
+}
+
+.carousel-caption h4, h2 {
+	margin: 0 0 5px;
+	
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/* SECTION STYLE FRAME */
+.section-1 {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 0px;
+}
+
+.section-1 h1 {
+	color: #7D7D7D;
+	border-bottom: 1px solid #7D7D7D;
+	font-style: strong;
+}
+
+.section-2 {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #ffffff;
+}
+
+.section-2 h1 {
+	font-family: brush script mt;
+	font-size: 55px;
+	border-bottom: 1px solid #cccccc;
+}
+
+.section-2 br {
+	position: relative;
+}
+
+
+
+.section-3 {
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #FFFFFF;	
+}
+
+.section-3 h1 {
+	padding-left: -100px;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.section-3 fieldset {
+	padding-left: 30px;
+}
+
+.section-3 small {
+	padding-left: 0px;
+}
+
+.section-3  aside {
+	position: relative;
+}
+
+.section-3 h3 {
+	padding-left: 30px;
+}
+
+.section-3 p {
+	padding-left: 30px;
+}
+
+
+.section-4 {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #FFFFFF;
+}
+
+
+.section-external {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.section-external h1 {
+	color: #7D7D7D;
+	border-bottom: 1px solid #7D7D7D;
+	font-family: times new roman;
+	font-size: 45px;
+}
+
+
+body {
+	color: #7D7D7D;
+	padding-top: 33px;
+	padding-bottom: 33px;
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/* IMG STYLE ANIMATION */
+.img:hover {
+	opacity: .8;
+}
+
+
+.img-polaroid:hover {
+	border-bottom: 40px solid #CCCCCC;
+	border-radius: 500px;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+	box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+}
+
+
+.img-polaroid {
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: ease-in-out;	
+}
+
+
+
+.img-rounded:hover {
+	border-left: 40px solid #CCCCCC;
+	border-radius: 10px 0px 0px 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+	box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+}
+
+
+.img-rounded {
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s 
+}
+
+
+.img-circle:hover {
+	border: 20px solid #CCCCCC;
+	border-radius: 10px 10px 10px 19px;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+	box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+}
+
+.img-circle {
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+/* BACKGROUND-COLOR FRAME EXTERNAL */
+.bg-black-2 {
+	padding-top: 10px;
+	background-color: black;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 1px 7px 0px 10px rgba(0,0,0,0.5);
+}
+
+
+.bg-black {
+	background-color: #7D7D7D;
+}
+
