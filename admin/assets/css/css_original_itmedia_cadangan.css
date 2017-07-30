@@ -1,0 +1,153 @@
+/*!
+ * Custom CSS of ITMedia
+ * Powered by Bootstrap 2.3.2 (https://getbootstrap.com/2.3.2) 2013
+ * Copyright 2016
+*/
+
+.navbar-inverse .btn-navbar {
+	margin-right: 25px;
+}
+
+.nav > li {
+	padding-left: 11px;
+}
+
+.navbar-inner {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+
+
+/* CAROUSEL CUSTOM */
+.carousel {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	
+}
+
+.carousel-control {
+	font-size: 150px;
+	background: none;
+	border: 0px solid #ffffff;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	
+}
+
+.carousel-caption {
+	opacity: .8;
+	text-align: center;
+}
+
+.carousel-caption h2,
+.carousel-caption p {
+	line-height: 20px;
+	color: #CCCCCC;	
+}
+
+.carousel-caption h4, h2 {
+	margin: 0 0 5px;
+	
+}
+
+/* SECTION STYLE */
+.section-1 {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.section-1 h1 {
+	color: #252525;
+	border-bottom: 1px solid #7D7D7D;
+}
+
+
+body {
+	color: #7D7D7D;
+	padding-top: 33px;
+	padding-bottom: 33px;
+}
+
+.img:hover {
+	opacity: .8;
+}
+
+
+
+/* IMG */
+.img-polaroid:hover {
+	border-bottom: 40px solid #CCCCCC;
+	border-radius: 500px;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+	box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+}
+
+.img-polaroid {
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: ease-in-out;	
+}
+
+
+.section-2 {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	color: #ffffff;
+}
+
+.section-2 h1 {
+	border-bottom: 1px solid #cccccc;
+}
+
+.bg-black {
+	background-color: #7D7D7D;
+}
+
+
+.img-rounded:hover {
+	border-left: 40px solid #CCCCCC;
+	border-radius: 10px 0px 0px 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+	box-shadow: 1px 2px 2px 1px rgb(190, 186, 186);
+}
+
+.img-rounded {
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s 
+}
+
+
+
+.section-3 {
+	text-align: left;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding: 10px;
+	color: #FFFFFF;
+	
+}
+
+.section-3 h1 {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+.section-4 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	color: #FFFFFF;
+}
+
+.bg-black-2 {
+	background-color: black;
+	border-radius: 0 0 8px 8px;
+}
