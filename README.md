@@ -1,5 +1,6 @@
 # ITMedia-Com
-Author : Muliana Insan Wahyudi
+# Author : Muliana Insan Wahyudi
+
 Proyek website ITMedia-Com
 
 Proyek website ini dibawah lisensi Free & Open Source. Siapapun dapat mempelajari, memodifikasi, dan mendistribusikan
