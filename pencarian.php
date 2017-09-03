@@ -104,7 +104,7 @@ $gambar = mysqli_real_escape_string($koneksi, trim($r['gambar']));
 						<input type='hidden' name='id' value='$id_artikel' />
 							<p style='text-align: justify;'>$isi...</p>
 							<small>
-								<a href='index.php?menu=blog-detail&id=$id_artikel' style='margin-top: 10px;'>Selengkapnya &raquo;
+								<a href='index.php?menu=show-detail&id=$id_artikel' style='margin-top: 10px;'>Selengkapnya &raquo;
 								</a>
 							</small>
 							<br /><br /><br />
