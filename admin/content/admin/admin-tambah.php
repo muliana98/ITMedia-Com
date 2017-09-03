@@ -1,5 +1,22 @@
 <?php
 include "koneksi.php";
+
+$ket_hak_akses = "admin";
+
+$id_akun = mysqli_real_escape_string($koneksi, trim($_SESSION['admin']));
+$seleksi_akun1 = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_akun'");
+$datanya = mysqli_fetch_array($seleksi_akun1);
+
+	$id = mysqli_real_escape_string($koneksi, trim($datanya['id']));	
+	$ket = mysqli_real_escape_string($koneksi, trim($datanya['ket']));
+	
+
+if(($ket_hak_akses == $ket)) {
+	
+	
+?>
+
+<?php
 if(isset($_POST['input'])) {
 	
 	$garam = "ITMedia20012015_garam1998biar_MANTAPgan";
@@ -111,6 +128,24 @@ if(isset($_POST['input'])) {
 					</table>
 			</form>
 		</div>
+
+
+
+
+
+
+<?php	
+}
+else {
+	
+	echo "<h2>Halaman ini hanya diperuntukan untuk Administrator</h2>";
+	
+}	
+	
+
+?>
+
+
 							
 							
 								
