@@ -1,6 +1,27 @@
-<h4 class="text-info">Data Anggota ITMedia-Com</h4>
-	<a href="home.php?menu=admin-tambah" class="btn btn-success"><i class="icon icon-plus-sign"></i> Tambah Data</a>
-	<hr />
+<?php
+require("koneksi.php");
+$ket_hak_akses = "admin";
+
+$id_akun = mysqli_real_escape_string($koneksi, trim($_SESSION['admin']));
+$seleksi_akun = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_akun'");
+$datanya = mysqli_fetch_array($seleksi_akun);
+	
+	$id = mysqli_real_escape_string($koneksi, trim($datanya['id']));
+	$ket = mysqli_real_escape_string($koneksi, trim($datanya['ket']));
+	
+
+
+if(($ket_hak_akses == $ket)) {
+	
+	echo "
+		<h4 class='text-info'>Data Anggota ITMedia-Com</h4>
+		<a href='home.php?menu=admin-tambah' class='btn btn-success'><i class='icon icon-plus-sign'></i> Tambah Data</a>
+	
+	";
+	
+?>
+
+<hr />
 		<table class="table table-bordered" width="100%">
 			<tr class="success">
 					<td><strong>ID</strong></td>
@@ -14,7 +35,6 @@
 				
 				
 							<?php
-							include "koneksi.php";
 								
 								$dataPerPage = 5;
 								if(isset($_GET['page'])) {
@@ -90,4 +110,27 @@
 									echo "</div>";
 									echo "<h5>Total Record : $jumData records</h5>";
 
-							?>
+							?>	
+
+
+
+
+	
+<?php	
+}
+
+
+
+else {
+
+?>
+
+<?php	
+
+	echo "<h2>Halaman ini hanya diperuntukan untuk <q>Administrator</q></h2> ";
+	
+}
+?>
+	
+
+	
