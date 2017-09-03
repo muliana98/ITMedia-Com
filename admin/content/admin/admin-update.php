@@ -1,17 +1,33 @@
 <?php
 include "koneksi.php";
-$id = mysqli_real_escape_string($koneksi, trim($_GET['id']));
 
-	$query = "SELECT * FROM admin WHERE id='$id'";
-	$sql = mysqli_query($koneksi, $query);
-	$hasil = mysqli_fetch_array($sql);
+$ket_hak_akses = "admin";
+	$id_akun = mysqli_real_escape_string($koneksi, trim($_SESSION['admin']));
+	$seleksi_akun = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_akun'");
+	$data_akunnya = mysqli_fetch_array($seleksi_akun);
 	
-		$id = mysqli_real_escape_string($koneksi, trim($hasil['id']));
-		$username = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['username'])));
-		$email = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['email'])));
-		$nama_lengkap = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['nama_lengkap'])));
-		$password = mysqli_real_escape_string($koneksi, trim(stripslashes(hash("sha256", $hasil['password']))));
-		$ket = mysqli_real_escape_string($koneksi, trim(stripslashes(ucwords($hasil['ket']))));
+		$id = mysqli_real_escape_string($koneksi, trim($data_akunnya['id']));
+		$ket = mysqli_real_escape_string($koneksi, trim($data_akunnya['ket']));
+		
+			if(($ket_hak_akses == $ket)) {
+				
+				
+			
+?>
+
+<?php			
+			$id = mysqli_real_escape_string($koneksi, trim($_GET['id']));
+
+				$query = "SELECT * FROM admin WHERE id='$id'";
+				$sql = mysqli_query($koneksi, $query);
+				$hasil = mysqli_fetch_array($sql);
+				
+					$id = mysqli_real_escape_string($koneksi, trim($hasil['id']));
+					$username = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['username'])));
+					$email = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['email'])));
+					$nama_lengkap = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['nama_lengkap'])));
+					$password = mysqli_real_escape_string($koneksi, trim(stripslashes(hash("sha256", $hasil['password']))));
+					$ket = mysqli_real_escape_string($koneksi, trim(stripslashes(ucwords($hasil['ket']))));
 
 ?>
 
@@ -64,3 +80,21 @@ $id = mysqli_real_escape_string($koneksi, trim($_GET['id']));
 			</table>
 		</form>
 	</div>
+
+
+
+			
+			<?php
+			}
+			else {
+				
+				echo "<h2>Halaman ini hanya diperuntukan untuk Administrator</h2>";
+				
+			}
+			
+			
+			
+						
+			?>			
+
+
