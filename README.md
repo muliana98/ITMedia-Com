@@ -1,4 +1,4 @@
-# ITMedia-Com
+# Tentang ITMedia-Com
 ITMedia-Computer (ITMedia-Com) merupakan proyek website startup dibidang IT (Teknologi Informasi). Yang diusungkan dan direncanakan pada tanggal 20 Januari 2015
 
 
