@@ -2,6 +2,9 @@
 include("koneksi.php");
 $id_nya = mysqli_real_escape_string($koneksi, trim($_GET['id']));
 
+$garam = "ITMedia20012015_garam1998biar_MANTAPgan";
+
+
 $seleksi = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_nya'");
 $data = mysqli_fetch_array($seleksi);
 	$id = mysqli_real_escape_string($koneksi, trim($data['id']));
@@ -15,7 +18,7 @@ if(isset($_POST['input'])) {
 	$id_nya = mysqli_real_escape_string($koneksi, trim($_REQUEST['id']));
 	
 	$username = mysqli_real_escape_string($koneksi, trim($_POST['username']));
-	$password = mysqli_real_escape_string($koneksi, trim(hash("sha256", $_POST['password'])));
+	$password = mysqli_real_escape_string($koneksi, trim(hash("sha256", $_POST['password'].hash("sha256", $garam)  )));
 	
 	$seleksi_2 = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_nya'");
 	$data_2 = mysqli_fetch_array($seleksi_2);
