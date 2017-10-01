@@ -88,7 +88,7 @@ if(isset($_POST['input'])) {
 					<tr>
 							<td></td>
 							<td colspan="2">
-							<input type="submit" name="input" class="btn btn-success" value="Perbarui Username">
+							<input type="submit" name="input" class="btn btn-success" value="Perbarui E-Mail">
 							<a href="home.php?menu=profil-update&&id=<?php echo $id_nya; ?>" class="btn btn-warning">Batal</a>
 							</td>
 							</tr>
