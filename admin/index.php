@@ -118,7 +118,7 @@ body {
 				<h2 class="form-signin-heading text-center"><i class="icon icon-lock" style="transform: scale(1.8); margin-top: 10px;"></i>&nbsp; Halaman Login</h2>
 					<center><i class="icon icon-user" style="transform: scale(1.8); padding-bottom: 10px;"></i></center>
 					
-						<input type="text" name="user" id="input_email" class="input-xlarge form-control input-block-level" placeholder="Username" required autofocus>
+						<input type="text" name="user" id="input_email" class="input-xlarge form-control input-block-level" placeholder="E-Mail / Username" required autofocus>
 						<input type="password" name="pass" id="input_password" class="input-xlarge form-control input-block-level" placeholder="Password" required>
 				
 					<button type="submit" name="login" class="btn btn-large btn-primary btn-block"><i class="icon-white icon-check"></i> Login</button>
