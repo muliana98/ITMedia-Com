@@ -11,16 +11,17 @@ if(isset($_POST['login'])) {
 	$pass = mysqli_real_escape_string($koneksi, trim(hash("sha256", $_POST['pass'].hash("sha256", $garam) )));
 	
 	
-$query = "SELECT id, username, password, ket FROM admin WHERE username='$user' AND password='$pass'";
+$query = "SELECT id, username, email, password, ket FROM admin WHERE username OR email='$user' AND password='$pass'";
 $sql = mysqli_query($koneksi, $query);
 $hasil = mysqli_fetch_array($sql);
 $jumlah = mysqli_num_rows($sql);
 	$id = mysqli_real_escape_string($koneksi, trim($hasil['id']));
+	$email = mysqli_real_escape_string($koneksi, trim($hasil['email']));
 	$username = mysqli_real_escape_string($koneksi, trim($hasil['username']));
 	$password = mysqli_real_escape_string($koneksi, trim($hasil['password']));
 	$ket = mysqli_real_escape_string($koneksi, trim($hasil['ket']));
 
-	if(($user == $username) && ($pass == $password) && ($ket == $ket_hak_akses or $ket_hak_akses2) && ($id > 0) && ($jumlah > 0)) {
+	if(($user == $username OR $user == $email) && ($pass == $password) && ($ket == $ket_hak_akses or $ket_hak_akses2) && ($id > 0) && ($jumlah > 0)) {
 		
 		$_SESSION['admin'] = $id;		
 			$status = "online";
