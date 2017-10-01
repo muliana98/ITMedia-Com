@@ -11,7 +11,7 @@ if(isset($_POST['login'])) {
 	$pass = mysqli_real_escape_string($koneksi, trim(hash("sha256", $_POST['pass'].hash("sha256", $garam) )));
 	
 	
-$query = "SELECT id, username, email, password, ket FROM admin WHERE username OR email='$user' AND password='$pass'";
+$query = "SELECT id, username, email, password, ket FROM admin WHERE (username='$user' AND password='$pass'     OR      email='$user' AND password='$pass') ";
 $sql = mysqli_query($koneksi, $query);
 $hasil = mysqli_fetch_array($sql);
 $jumlah = mysqli_num_rows($sql);
