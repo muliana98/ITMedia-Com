@@ -11,5 +11,6 @@ Muliana Insan Wahyudi
 Proyek website ini dibawah lisensi Free & Open Source. Siapapun dapat mempelajari, memodifikasi, dan mendistribusikan
 (dengan atau tanpa modifikasi) secara bebas dan terbuka.
 
-
-Catatan : Tahap pengembangan dan perbaikan masih terus dilakukan
+.
+Catatan : 
+Tahap pengembangan dan perbaikan masih terus dilakukan
