@@ -2,8 +2,8 @@
 
 $nama_server = "localhost";
 $user = "root";
-$password = "hnMpZSdmec5VwtVL";
-$database = "itmedia_db";
+$password = "";
+$database = "nama_database_kalian";
 
 $koneksi = mysqli_connect($nama_server, $user, $password, $database);
 
