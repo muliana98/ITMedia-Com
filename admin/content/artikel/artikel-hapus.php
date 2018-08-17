@@ -1,6 +1,9 @@
 <?php
 include "../../koneksi.php";
 
+
+
+
 $id_artikel = mysqli_real_escape_string($koneksi, trim($_REQUEST['id_artikel']));
 
 $select = "SELECT gambar FROM artikel WHERE id_artikel='$id_artikel'";
