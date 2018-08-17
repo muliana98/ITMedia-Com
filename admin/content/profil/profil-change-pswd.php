@@ -57,35 +57,37 @@ else echo "<div class='alert alert-danger'>
 
 ?>
 
-<div class="container">
-	<h4 class="text-info"><i class="icon icon-edit"></i> Perbarui Password Akun</h4>
-		<form method="post" name="input" action="" class="orange">
-			<input type="hidden" name="id" value="<?php echo $id; ?>" />	
-				<table class="table table-striped">
-					<tr>
-							<td>Password Lama</td>
-							<td>:</td>
-							<td><input type="password" name="password_lama" class="input-xlarge" maxlength="30"></td>
-							</tr>
-					<tr>
-							<td>Password Baru</td>
-							<td>:</td>
-							<td><input type="password" name="password_baru" class="input-xlarge" maxlength="30"></td>
-							</tr>
-					<tr>
-							<td>Konfirmasi Password Baru</td>
-							<td>:</td>
-							<td><input type="password" name="konfirmasi_password" class="input-xlarge" maxlength="30"></td>
-							</tr>
+<div class="row">
+	<div class="span9">
+		<h4 class="text-info"><i class="icon icon-edit"></i> Perbarui Password Akun</h4>
+			<form method="post" name="input" action="" class="orange">
+				<input type="hidden" name="id" value="<?php echo $id; ?>" />	
+					<table class="table table-striped">
+						<tr>
+								<td>Password Lama</td>
+								<td>:</td>
+								<td><input type="password" name="password_lama" class="input-xlarge" maxlength="30"></td>
+								</tr>
+						<tr>
+								<td>Password Baru</td>
+								<td>:</td>
+								<td><input type="password" name="password_baru" class="input-xlarge" maxlength="30"></td>
+								</tr>
+						<tr>
+								<td>Konfirmasi Password Baru</td>
+								<td>:</td>
+								<td><input type="password" name="konfirmasi_password" class="input-xlarge" maxlength="30"></td>
+								</tr>
 
-					<tr>
-							<td></td>
-							<td colspan="2">
-							<input type="submit" name="input" class="btn btn-success" value="Update Password">
-							<a href="home.php?menu=profil" class="btn btn-warning">Batal</a>
-							</td>
-							</tr>
-							
-			</table>
-		</form>
-	</div>
+						<tr>
+								<td></td>
+								<td colspan="2">
+								<input type="submit" name="input" class="btn btn-success" value="Update Password">
+								<a href="home.php?menu=profil" class="btn btn-warning">Batal</a>
+								</td>
+								</tr>
+								
+				</table>
+			</form>
+		</div>
+</div>
