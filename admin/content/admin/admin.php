@@ -1,5 +1,7 @@
 <?php
 require("koneksi.php");
+require("/../fungsi_admin.php");
+
 $ket_hak_akses = "admin";
 
 $id_akun = mysqli_real_escape_string($koneksi, trim($_SESSION['admin']));
@@ -16,10 +18,17 @@ if(($ket_hak_akses == $ket)) {
 	echo "
 		<h4 class='text-info'>Data Anggota ITMedia-Com</h4>
 		<a href='home.php?menu=admin-tambah' class='btn btn-success'><i class='icon icon-plus-sign'></i> Tambah Data</a>
-	
+	  
 	";
 	
+
+	
 ?>
+
+<br /><br /><div class="input-append pull-right">
+			<input class="input" id="appendedInputButtons" name="cari" type="text" placeholder="Cari Data Anggota disini...">
+					<button type="submit" name="cari" class="btn btn-info"><i class="icon icon-search"></i>  </button>
+		  </div>
 
 <hr />
 		<table class="table table-bordered" width="100%">
@@ -46,8 +55,13 @@ if(($ket_hak_akses == $ket)) {
 								
 									$adminbaru = "SELECT * FROM admin WHERE id != 1 LIMIT $offset, $dataPerPage";
 									$sql = mysqli_query($koneksi, $adminbaru);
+									
+									$nomor = 1;
+									$nomor1 = 5 * $noPage;
+									
 									while($hasil = mysqli_fetch_array($sql)) 
 									{
+										
 										
 										$id = mysqli_real_escape_string($koneksi, trim($hasil['id']));
 										$username = mysqli_real_escape_string($koneksi, trim($hasil['username']));
@@ -80,35 +94,15 @@ if(($ket_hak_akses == $ket)) {
 									$data = mysqli_fetch_array($result);
 									$jumData = mysqli_real_escape_string($koneksi, trim($data['jumData']));
 									
+									
+									
 									$jumPage = ceil($jumData/$dataPerPage);
 									
-									$showPage = "";
+									$showPage = $jumPage;
+									$halaman_url = "home.php?menu=admin&&page=";
+
 									
-									echo "<div class='tf_pagination style3 col-sm-12'><div class='inner'>";
-									if($noPage > 1) {
-										
-										echo "<a class='btn btn-success' href='home.php?menu=admin&&page=".($noPage-1)."'><span><i class='icon-white icon-chevron-left'></i><span></a>";
-										
-									} for($page = 1; $page <= $jumPage; $page++) {
-										
-										if((($page >= $noPage - 3) && ($page <= $noPage + 3)) || ($page == 1) || ($page == $jumPage)) {
-											
-											if(($showPage == 1) && ($page != 2)) echo "..";
-											if(($showPage != ($jumPage - 1)) && ($page == $jumPage)) echo "..";
-											if($page == $noPage) {
-												
-												echo "<a href='#' class='page-numbers btn btn-warning'><b>".$page."</b></a>";
-											}
-											
-										} $showPage = $page;
-										
-									}
-									
-									if($noPage < $jumPage)
-										echo "<a class='btn btn-success' href='home.php?menu=admin&&page=".($noPage+1)."'><span><i class='icon-white icon-chevron-right'></i></span></a> </div></div>";
-									
-									echo "</div>";
-									echo "<h5>Total Record : $jumData records</h5>";
+									echo paginasi($halaman_url, $jumData, $jumPage, $noPage, $showPage); //MEMANGGIL FUNCTION PAGINASI DARI halaman "fungsi_admin.php"
 
 							?>	
 
@@ -127,7 +121,7 @@ else {
 
 <?php	
 
-	echo "<h2>Halaman ini hanya diperuntukan untuk <q>Administrator</q></h2> ";
+	echo "<h2>Maaf,<br />Halaman ini hanya diperuntukan untuk <q>Administrator</q></h2> ";
 	
 }
 ?>
