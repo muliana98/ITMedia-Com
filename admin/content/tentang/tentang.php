@@ -15,16 +15,17 @@
 
 <?php
 include "koneksi.php";
+include "/../fungsi_admin.php";
 
 $dataPertentang = 5;
 
 if(isset($_GET['tentang'])) {
 	
-	$notentang = $_GET['tentang'];
+	$noPage = $_GET['tentang'];
 	
 }
-else $notentang = 1;
-$offset = ($notentang - 1) * $dataPertentang;
+else $noPage = 1;
+$offset = ($noPage - 1) * $dataPertentang;
 
 	$tentangbaru = "SELECT * FROM tentang ORDER BY nm_tentang LIMIT $offset, $dataPertentang";
 	$sql = mysqli_query($koneksi, $tentangbaru);
@@ -56,41 +57,15 @@ $offset = ($notentang - 1) * $dataPertentang;
 	$result = mysqli_query($koneksi, $query1);
 	$data = mysqli_fetch_array($result);
 	$jumData = mysqli_real_escape_string($koneksi, $data['jumData']);
-	$jumtentang = ceil($jumData/$dataPertentang);
+	$jumPage = ceil($jumData/$dataPertentang);
 	
-	$showtentang = "";
+	$showPage = $jumPage;
 	
-	echo "<div class='tf_pagination style3 col-sm-12'><div class='inner'>";
-	if($notentang>1) {
-		
-		echo "<a class='btn btn-success' href='home.php?menu=tentang&&tentang=".($notentang-1)."'><span><</span></a>";
-		
-	}
-	for($tentang = 1; $tentang <= $jumtentang; $tentang++) {
-		
-	if((($tentang >= $notentang - 3) && ($tentang <= $notentang + 3)) || ($tentang == 1) || ($tentang == $jumtentang)) {
-		
-		if(($showtentang == 1) && ($tentang != 2)) echo "..";
-		if(($showtentang != ($jumtentang - 1)) && ($tentang == $jumtentang)) {
-			echo "..";
-		}
-		if($tentang == $notentang) {
-			
-			echo "<a href='#' class='tentang-numbers btn btn-warning'><b>".$tentang."</b></a>";
-			
-		}
-		$showtentang = $tentang;	
-	}
-		
-}
+	$halaman_url = "home.php?menu=tentang&&tentang=";
+	
+	
+	echo paginasi($halaman_url, $jumData, $jumPage, $noPage, $showPage);
 
-if($notentang < $jumtentang) {
-	
-	echo "<a class='btn btn-success' href='home.php?menu=tentang&&tentang=".($notentang+1)."'><span>></span></a> </div></div>";
-	
-} 
-echo "</div>";
-echo "<h5>Total Record : $jumData records</h5>";
 
 ?>
 
