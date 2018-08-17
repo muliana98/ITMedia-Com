@@ -4,7 +4,6 @@ $id_nya = mysqli_real_escape_string($koneksi, trim($_GET['id']));
 
 $garam = "ITMedia20012015_garam1998biar_MANTAPgan";
 
-
 $seleksi = mysqli_query($koneksi, "SELECT * FROM admin WHERE id='$id_nya'");
 $data = mysqli_fetch_array($seleksi);
 	$id = mysqli_real_escape_string($koneksi, trim($data['id']));
@@ -24,7 +23,11 @@ if(isset($_POST['input'])) {
 	$data_2 = mysqli_fetch_array($seleksi_2);
 		$password_database = mysqli_real_escape_string($koneksi, trim(stripslashes($data_2['password'])));
 		
-		
+	
+
+	$seleksi_data = mysqli_query($koneksi, "SELECT email FROM admin WHERE email='$email'");
+	$hasilnya = mysqli_fetch_array($seleksi_data);
+		$cek_data_email = mysqli_real_escape_string($koneksi, trim($hasilnya['email']));
 		
 
 	if(empty($email)) {
@@ -38,7 +41,7 @@ if(isset($_POST['input'])) {
 
 	else {
 		
-		if($password_database == $password) {
+		if(($cek_data_email != $email) && ($password_database == $password)) {
 			
 			$update = mysqli_query($koneksi, "UPDATE admin SET email='$email' WHERE id='$id_nya'");
 				
@@ -51,6 +54,20 @@ if(isset($_POST['input'])) {
 						
 			
 		}
+		else if(($cek_data_email == $email) && ($password_database != $password) ) {
+			echo "<div class='alert alert-danger'>
+							<button type='button' class='close' data-dismiss='alert'>&times;</button>
+							<strong>Maaf, E-Mail tidak tersedia dan Password yang dimasukan salah. Silakan gunakan E-Mail lainnya dan masukan Password yang benar</strong>
+						</div> ";
+		}
+		
+		else if($cek_data_email == $email) {
+			echo "<div class='alert alert-danger'>
+							<button type='button' class='close' data-dismiss='alert'>&times;</button>
+							<strong>Maaf, E-Mail tidak tersedia. Silakan gunakan E-Mail lainnya</strong>
+						</div> ";
+		}
+		
 			else 		echo "<div class='alert alert-danger'>
 							<button type='button' class='close' data-dismiss='alert'>&times;</button>
 								<strong><i class='icon icon-info-sign'></i> Password Anda salah!</strong>
@@ -67,35 +84,36 @@ if(isset($_POST['input'])) {
 ?>
 
 
+<div class="row">
+	<div class="span9">
+		<h4 class="text-info"><i class="icon icon-edit"></i> Perbarui E-Mail</h4>
+			<form method="post" name="input" action="" class="orange">
+				<input type="hidden" name="id" value="<?php echo $id; ?>" />	
+					<table class="table table-striped">
+						<tr>
+								<td>E-Mail</td>
+								<td>:</td>
+								<td><input type="text" name="email" class="input-xlarge" value="<?php echo $email; ?>"></td>
+								</tr>
+						<tr>
+								<td colspan="3"></td>
+								</tr>
+						<tr>
+								<td>Password<br />  </td>
+								<td>:</td>
+								<td><input type="password" name="password" class="input-xlarge"><br />
+									<code>&lt; Masukkan Password Untuk Konfirmasi Perubahan "E-Mail" &gt;</code></td>
+								</tr>
 
-<div class="container">
-	<h4 class="text-info"><i class="icon icon-edit"></i> Perbarui E-Mail</h4>
-		<form method="post" name="input" action="" class="orange">
-			<input type="hidden" name="id" value="<?php echo $id; ?>" />	
-				<table class="table table-striped">
-					<tr>
-							<td>E-Mail</td>
-							<td>:</td>
-							<td><input type="text" name="email" class="input-xlarge" value="<?php echo $email; ?>"></td>
-							</tr>
-					<tr>
-							<td colspan="3"></td>
-							</tr>
-					<tr>
-							<td>Password<br />  </td>
-							<td>:</td>
-							<td><input type="password" name="password" class="input-xlarge"><br />
-								<code>&lt; Masukkan Password Untuk Konfirmasi Perubahan "E-Mail" &gt;</code></td>
-							</tr>
-
-					<tr>
-							<td></td>
-							<td colspan="2">
-							<input type="submit" name="input" class="btn btn-success" value="Perbarui E-Mail">
-							<a href="home.php?menu=profil-update&&id=<?php echo $id_nya; ?>" class="btn btn-warning">Batal</a>
-							</td>
-							</tr>
-							
-			</table>
-		</form>
-	</div>
+						<tr>
+								<td></td>
+								<td colspan="2">
+								<input type="submit" name="input" class="btn btn-success" value="Perbarui E-Mail">
+								<a href="home.php?menu=profil-update&&id=<?php echo $id_nya; ?>" class="btn btn-warning">Batal</a>
+								</td>
+								</tr>
+								
+				</table>
+			</form>
+		</div>
+</div>
