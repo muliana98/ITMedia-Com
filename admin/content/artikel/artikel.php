@@ -1,7 +1,7 @@
 <h4 class="text-info">Artikel</h4>
 	<a href="home.php?menu=artikel-tambah" class="btn btn-success"><i class="icon icon-plus-sign"></i> Tambah Artikel</a>
 		<hr />
-			<table class="table table-bordered" width="100%">
+			<table class="table table-bordered" id="artikel" width="100%">
 				<tr class="success">
 						<td><strong>ID.</strong></td>
 						<td><strong>Judul</strong></td>
@@ -18,6 +18,8 @@
 						
 						<?php
 						include "koneksi.php";
+						include "/../fungsi_admin.php";
+						
 						$dataPerPage = 5;
 						if(isset($_GET['page'])) {
 							
@@ -35,11 +37,40 @@
 							$id_artikel = mysqli_real_escape_string($koneksi, trim($hasil['id_artikel']));
 							$id_kategori = mysqli_real_escape_string($koneksi, trim($hasil['id_kategori']));
 							$judul = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['judul'])));
+							$judul = substr($judul, 0, 12);
 							$kategori = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['nm_kategori'])));
 							$headline = mysqli_real_escape_string($koneksi, trim(nl2br(stripslashes($hasil['headline']))));
 							$headline2 = substr($headline,0,10);
-							$isi = mysqli_real_escape_string($koneksi, trim(nl2br(stripslashes($hasil['isi']))));
+							$isi = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['isi'])));
 							$isi2 = substr($isi,0,30);
+							
+							
+							//MENGHILANGKAN TAG HEADING HTML
+							$isi2 = str_replace('<h1>', "", $isi2);
+							$isi2 = str_replace('</h1>', "", $isi2);
+							$isi2 = str_replace('<h2>', "", $isi2);
+							$isi2 = str_replace('</h2>', "", $isi2);
+							$isi2 = str_replace('<h3>', "", $isi2);
+							$isi2 = str_replace('</h3>', "", $isi2);
+							$isi2 = str_replace('<h4>', "", $isi2);
+							$isi2 = str_replace('</h4>', "", $isi2);
+							$isi2 = str_replace('<h5>', "", $isi2);
+							$isi2 = str_replace('</h5>', "", $isi2);
+							$isi2 = str_replace('<h6>', "", $isi2);
+							$isi2 = str_replace('</h6>', "", $isi2);
+							
+							
+							//MENGHILANGKAN BOLD, ITALIC, UNDERLINE
+							$isi2 = str_replace('<strong>', "", $isi2);
+							$isi2 = str_replace('<i>', "", $isi2);
+							$isi2 = str_replace('<u>', "", $isi2);
+							$isi2 = str_replace('<b>', "", $isi2);
+							$isi2 = str_replace('</strong>', "", $isi2);
+							$isi2 = str_replace('</i>', "", $isi2);
+							$isi2 = str_replace('</u>', "", $isi2);
+							$isi2 = str_replace('</b>', "", $isi2);
+							
+							
 							$pengirim = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['pengirim'])));
 							$tanggal = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['tanggal'])));
 							$gambar = mysqli_real_escape_string($koneksi, trim(stripslashes($hasil['gambar'])));
@@ -68,36 +99,12 @@
 						
 						$jumPage = ceil($jumData/$dataPerPage);
 						
-						$showPage = "";
+						$showPage = $jumPage;
 						
-						echo "<div class='tf_pagination style3 col-sm-12'><div class='inner'>";
+						$halaman_url = "home.php?menu=artikel&&page=";
 						
-						if($noPage>1) {
-							
-							echo "<a class='btn btn-success' href='home.php?menu=artikel&&page=".($noPage-1)."'><span><</span></a>";
-							
-						} for($page = 1; $page <= $jumPage; $page++) {
-							
-							if((($page >= $noPage - 3) && ($page <= $noPage + 3)) || ($page == 1) || ($page == $jumPage)) {
-								
-								if(($showPage == 1) && ($page != 2)) echo "..";
-								if(($showPage != ($jumPage - 1)) && ($page == $jumPage)) echo "..";
-								if($page == $noPage) {
-									
-									echo "<a href='#' class='page-numbers btn btn-warning'><b>".$page."</b></a>";
-									
-								} $showPage = $page;
-								
-							}
-							
-						} if($noPage < $jumPage) {
-							
-							echo "<a class='btn btn-success' href='home.php?menu=artikel&&page=".($noPage+1)."'><span>></span></a></div></div>";
-							
-						}
-						echo "</div>";
-						echo "<h5>Total Record : $jumData records</h5>";
 						
+						echo paginasi($halaman_url, $jumData, $jumPage, $noPage, $showPage);
 						
 						?>
 						
