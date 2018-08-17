@@ -13,6 +13,8 @@
 
 <?php
 include "koneksi.php";
+include "/../fungsi_admin.php";
+
 $dataPerPage = 5;
 if(isset($_GET['page'])) {
 	$noPage = $_GET['page'];
@@ -54,31 +56,11 @@ $data = mysqli_fetch_array($result);
 $jumData = mysqli_real_escape_string($koneksi, trim($data['jumData']));
 $jumPage = ceil($jumData/$dataPerPage);
 
-$showPage = "";
+$showPage = $jumPage;
 
-echo "<div class='tf_pagination style3 span12'><div class='inner'>";
-if($noPage>1) {
-	echo "<a class='page_prev btn btn-success' href='home.php?menu=slide_show&&page=".($noPage-1)."'><span><</span></a>";
-}
+$halaman_url = "home.php?menu=slide_show&&page=";
 
-for($page = 1; $page <= $jumPage; $page++) {
-	
-	if((($page >= $noPage - 3) && ($page <= $noPage + 3)) || ($page == 1)) {
-		
-		if(($showPage == 1) && ($page != 2)) echo "..";
-		if(($showPage != ($jumPage - 1)) && ($page == $jumPage)) echo "..";
-		if($page == $noPage) {
-			echo "<a href='#' class='page-numbers btn btn-warning'><b>".$page."</b></a>";
-		}
-		$showPage = $page;
-	}
-}
 
-if($noPage < $jumPage) {
-	echo "<a class='page_next btn btn-success' href='home.php?menu=slide_show&&page=".($noPage+1)."'><span>></span></a></div></div>";
-}
-
-echo "</div>";
-echo "<h5>Total Record : $jumData records</h5>";
+echo paginasi($halaman_url, $jumData, $jumPage, $noPage, $showPage);
 
 ?>
