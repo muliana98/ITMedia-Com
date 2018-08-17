@@ -38,27 +38,29 @@ if(isset($_POST['input'])) {
 
 ?>
 
-<div class="container">
-	<h4 class="text-info"><i class="icon icon-picture"></i> Pilih Foto Profil</h4>
-		<form method="post" name="input" action="" class="orange" enctype="multipart/form-data">
-			<input type="hidden" name="id" value="<?php echo $id; ?>" />	
-				<table class="table table-striped">
-					<tr>
-							<td>Foto Profil</td>
-							<td>:</td>
-							<td><input type="file" name="foto_profil" class="input-xlarge" maxlength="120"></td>
-							</tr>
-					<tr>
-							<td></td>
-							<td colspan="2">
-							<input type="submit" name="input" class="btn btn-success" value="Unggah Foto Profil">
-							<a href="home.php?menu=profil" class="btn btn-warning">Batal</a>
-							</td>
-							</tr>
-					<tr>
-							<td colspan="3"></td>
-							</tr>
-							
-			</table>
-		</form>
-	</div>
+<div class="row">
+	<div class="span9">
+		<h4 class="text-info"><i class="icon icon-picture"></i> Pilih Foto Profil</h4>
+			<form method="post" name="input" action="" class="orange" enctype="multipart/form-data">
+				<input type="hidden" name="id" value="<?php echo $id; ?>" />	
+					<table class="table table-striped">
+						<tr>
+								<td>Foto Profil</td>
+								<td>:</td>
+								<td><input type="file" name="foto_profil" class="input-xlarge" maxlength="120"></td>
+								</tr>
+						<tr>
+								<td></td>
+								<td colspan="2">
+								<input type="submit" name="input" class="btn btn-success" value="Unggah Foto Profil">
+								<a href="home.php?menu=profil" class="btn btn-warning">Batal</a>
+								</td>
+								</tr>
+						<tr>
+								<td colspan="3"></td>
+								</tr>
+								
+				</table>
+			</form>
+		</div>
+</div>
