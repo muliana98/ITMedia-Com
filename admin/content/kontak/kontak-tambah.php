@@ -30,52 +30,54 @@ if(isset($_POST['input'])) {
 
 ?>
 
-<div class="container">
-	<a class="btn btn-success" href="home.php?menu=kontak"><i class="icon icon-chevron-left"></i> Lihat Data</a>
-		<hr />
-			<h4 class="text-info"><i class="icon icon-pencil"></i> Input Data Kontak</h4>
-				<form method="post" action="" name="input" enctype="multipart/data-form">
-					<table class="table">
-						<tr>
-								<td>Nama</td>
-								<td>:</td>
-								<td><input type="text" name="nama" class="input-xlarge" maxlength="40"></td>
-								</tr>
-						<tr>
-								<td>Alamat</td>
-								<td>:</td>
-								<td><input type="text" name="alamat" class="input-xlarge" maxlength="150"></td>
-								</tr>
-						<tr>
-								<td>Jenis</td>
-								<td>:</td>
-								<td><input type="text" name="jenis" class="input-xlarge" maxlength="50"></td>
-								</tr>
-						<tr>
-								<td>Telp.</td>
-								<td>:</td>
-								<td><input type="text" name="telp" class="input-xlarge" maxlength="20"></td>
-								</tr>
-						<tr>
-								<td>E-Mail</td>
-								<td>:</td>
-								<td><input type="text" name="email" class="input-xlarge" maxlength="40"></td>
-								</tr>
-						<tr>
-								<td>Ket.</td>
-								<td>:</td>
-								<td><textarea name="ket" class="input-xlarge"></textarea></td>
-								</tr>
-						<tr>
-								<td></td>
-								<td colspan="2">
-								<input type="submit" name="input" class="btn btn-success" value="Tambah Kontak">
-								<a class="btn btn-warning" href="home.php?menu=kontak">Batal</a>
-								</td>
-								</tr>
-					</table>
-				</form>
-			</div>
+<div class="row">
+	<div class="span9">
+		<a class="btn btn-success" href="home.php?menu=kontak"><i class="icon icon-chevron-left"></i> Lihat Data</a>
+			<hr />
+				<h4 class="text-info"><i class="icon icon-pencil"></i> Input Data Kontak</h4>
+					<form method="post" action="" name="input" enctype="multipart/data-form">
+						<table class="table">
+							<tr>
+									<td>Nama</td>
+									<td>:</td>
+									<td><input type="text" name="nama" class="input-xlarge" maxlength="40"></td>
+									</tr>
+							<tr>
+									<td>Alamat</td>
+									<td>:</td>
+									<td><input type="text" name="alamat" class="input-xlarge" maxlength="150"></td>
+									</tr>
+							<tr>
+									<td>Jenis</td>
+									<td>:</td>
+									<td><input type="text" name="jenis" class="input-xlarge" maxlength="50"></td>
+									</tr>
+							<tr>
+									<td>Telp.</td>
+									<td>:</td>
+									<td><input type="text" name="telp" class="input-xlarge" maxlength="20"></td>
+									</tr>
+							<tr>
+									<td>E-Mail</td>
+									<td>:</td>
+									<td><input type="text" name="email" class="input-xlarge" maxlength="40"></td>
+									</tr>
+							<tr>
+									<td>Ket.</td>
+									<td>:</td>
+									<td><textarea name="ket" class="input-xlarge"></textarea></td>
+									</tr>
+							<tr>
+									<td></td>
+									<td colspan="2">
+									<input type="submit" name="input" class="btn btn-success" value="Tambah Kontak">
+									<a class="btn btn-warning" href="home.php?menu=kontak">Batal</a>
+									</td>
+									</tr>
+						</table>
+					</form>
+				</div>
+</div>
 						
 								
 								
