@@ -10,9 +10,9 @@ if(isset($_POST['input'])) {
 	$judul = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_REQUEST['judul']))));
 	$kategori = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_REQUEST['kategori']))));
 	
-	$headline = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags(nl2br($_REQUEST['headline'])))));
-	$isi = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags(nl2br($_REQUEST['isi'])))));
-	$pengirim = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_REQUEST['pengirim']))));
+	$headline = mysqli_real_escape_string($koneksi, trim(addslashes($_REQUEST['headline'])));
+	$isi = mysqli_real_escape_string($koneksi, trim(addslashes($_REQUEST['isi'])));
+	$pengirim_diubah = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_REQUEST['pengirim_diubah']))));
 	$gambar = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_REQUEST['gambar']))));
 	
 		$getgambar = mysqli_real_escape_string($koneksi, trim(stripslashes($_REQUEST['getgambar'])));
@@ -38,7 +38,7 @@ if(isset($_POST['input'])) {
 	
 	if($gambar_semula == $gambar) {
 		
-		$update = "UPDATE artikel SET id_kategori='$kategori', judul='$judul', headline='$headline', isi='$isi', pengirim='$pengirim', tanggal=now() WHERE id_artikel='$id_artikel' ";
+		$update = "UPDATE artikel SET id_kategori='$kategori', judul='$judul', headline='$headline', isi='$isi', pengirim_diubah='$pengirim_diubah', tanggal_diubah=now() WHERE id_artikel='$id_artikel' ";
 		$sql = mysqli_query($koneksi, $update);
 		if($sql) header('Location:../../home.php?menu=artikel');
 		else echo "Gagal Update!";
@@ -53,7 +53,7 @@ if(isset($_POST['input'])) {
 			
 		}
 		
-		$update = "UPDATE artikel SET id_kategori='$kategori', judul='$judul', headline='$headline', isi='$isi', pengirim='$pengirim', tanggal=now(), gambar='$tujuan1' WHERE id_artikel='$id_artikel' ";
+		$update = "UPDATE artikel SET id_kategori='$kategori', judul='$judul', headline='$headline', isi='$isi', pengirim='$pengirim', tanggal_diubah=now(), gambar='$tujuan1' WHERE id_artikel='$id_artikel' ";
 		$sql = mysqli_query($koneksi, $update);
 		if($sql) header('Location:../../home.php?menu=artikel');
 		else echo "Gagal Update!";
