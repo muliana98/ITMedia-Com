@@ -115,33 +115,35 @@ if(isset($_POST['input'])) {
 
 ?>
 
-<div class="container">
-	<a class="btn btn-success" href="home.php?menu=slide_show"><i class="icon icon-chevron-left"></i> Lihat Data</a>
-		<hr />
-		<h4 class="text-info"><i class="icon icon-pencil"></i> Input Slide-Show</h4>
-			<form method="post" name="input" action="" enctype="multipart/form-data">
-				<table class="table table-striped">
+<div class="row">
+	<div class="span9">
+		<a class="btn btn-success" href="home.php?menu=slide_show"><i class="icon icon-chevron-left"></i> Lihat Data</a>
+			<hr />
+			<h4 class="text-info"><i class="icon icon-pencil"></i> Input Slide-Show</h4>
+				<form method="post" name="input" action="" enctype="multipart/form-data">
+					<table class="table table-striped">
+						<tr>
+						<td>Judul</td>
+						<td>:</td>
+						<td><input type="text" name="judul" class="input-xlarge" maxlength="50"></td>
+						</tr>
 					<tr>
-					<td>Judul</td>
-					<td>:</td>
-					<td><input type="text" name="judul" class="input-xlarge" maxlength="50"></td>
-					</tr>
-				<tr>
-					<td>Deskripsi</td>
-					<td>:</td>
-					<td><input type="text" name="deskripsi" class="input-xlarge" maxlength="220"> </td>
-					</tr>
-				<tr>
-					<td>Gambar</td>
-					<td>:</td>
-					<td><input type="file" name="gambar" class="input-xlarge" maxlength="60"></td>
-					</tr>
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<input type="submit" name="input" value="Tambah Slide-Show" class="btn btn-success">
-						<a href="home.php?menu=slide_show" class="btn btn-danger">Batal</a> </td>
-					</tr>
-				</table>
-		</form>
-	</div>
+						<td>Deskripsi</td>
+						<td>:</td>
+						<td><input type="text" name="deskripsi" class="input-xlarge" maxlength="220"> </td>
+						</tr>
+					<tr>
+						<td>Gambar</td>
+						<td>:</td>
+						<td><input type="file" name="gambar" class="input-xlarge" maxlength="60"></td>
+						</tr>
+					<tr>
+						<td></td>
+						<td colspan="2">
+							<input type="submit" name="input" value="Tambah Slide-Show" class="btn btn-success">
+							<a href="home.php?menu=slide_show" class="btn btn-danger">Batal</a> </td>
+						</tr>
+					</table>
+			</form>
+		</div>
+</div>
