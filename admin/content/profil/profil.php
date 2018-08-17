@@ -79,7 +79,9 @@
 									<td colspan='2'></td>
 									<td>";
 									
-									
+								
+
+								
 						if($foto_profil) {
 							
 							echo "  <a class='btn' href='home.php?menu=profil-foto-ubah&&id=$id'><i class='icon icon-picture'></i> Ubah Foto Profil</a>";
