@@ -19,16 +19,20 @@ if(isset($_POST['input'])) {
 	$rgetnm = mysqli_fetch_array($sqlgetnm);
 	$nm = mysqli_real_escape_string($koneksi, trim($rgetnm['nm_kategori']));
 	
-	$headline = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_POST['headline']))));
-	$isi_artikel = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_POST['isi']))));
-	$isi_artikel = str_replace('<br />', "\r\n", $isi_artikel);
+	$headline = mysqli_real_escape_string($koneksi, trim(addslashes($_POST['headline'])));
+	$isi_artikel = mysqli_real_escape_string($koneksi, trim(addslashes($_POST['isi'])));
+	$isi_artikel2 = str_replace('', "", $isi_artikel);
 	$pengirim = mysqli_real_escape_string($koneksi, trim(addslashes(strip_tags($_POST['pengirim']))));
 	
-	$sumber = $_FILES['gambar']['tmp_name'];
-	$tujuan = "../images/artikel/".$nm."/".$_FILES['gambar']['name'];
-	$tujuan1 = "/images/artikel/".$nm."/".$_FILES['gambar']['name'];
+	//$acak = time()."_";
 	
-	$gambar = mysqli_real_escape_string($koneksi, trim(addslashes($_FILES['gambar']['name'])));
+	$huruf_acak = rand(1, 10000).round(microtime(true))."_" ;
+	
+	$sumber = $_FILES['gambar']['tmp_name'];
+	$tujuan = "../images/artikel/".$nm."/".$huruf_acak.$_FILES['gambar']['name'];
+	$tujuan1 = "/images/artikel/".$nm."/".$huruf_acak.$_FILES['gambar']['name'];
+	
+	$gambar = mysqli_real_escape_string($koneksi, trim(addslashes($huruf_acak.$_FILES['gambar']['name'])));
 	move_uploaded_file($sumber, $tujuan);
 	
 	
@@ -172,7 +176,7 @@ if(isset($_POST['input'])) {
 	
 	
 	else {
-	$insertquery = "INSERT INTO artikel VALUES ('', '$kategori', '$judul', '$headline', '$isi_artikel', '$pengirim', now(), '$tujuan1')";
+	$insertquery = "INSERT INTO artikel VALUES ('', '$kategori', '$judul', '$headline', '$isi_artikel2', '$pengirim', '', now(), '', '$tujuan1')";
 	$sql = mysqli_query($koneksi, $insertquery);
 	
 	
@@ -196,67 +200,69 @@ if(isset($_POST['input'])) {
 
 ?>
 
-<div class="container">
-	<a class="btn btn-success" href="home.php?menu=artikel"><i class="icon icon-chevron-left"></i> Lihat Data</a>
-		<hr />
-		<h4 class="text-info"><i class="icon icon-pencil"></i> Input Artikel Baru</h4>
-				<form name="input" method="post" action="" class="orange" enctype="multipart/form-data">
-					<table class="table table-striped">
-						<tr>
-								<td>Judul Artikel</td>
-								<td>:</td>
-								<td><input type="text" name="judul" class="input-xlarge" maxlength="120"></td>
-								</tr>
-						<tr>
-								<td>Kategori</td>
-								<td>:</td>
-								<td>
-									<select name="kategori" class="input-xlarge">
-									<?php
-										$query = "SELECT id_kategori, nm_kategori FROM kategori ORDER BY nm_kategori";
-										$sql = mysqli_query($koneksi, $query);
-										while($isi = mysqli_fetch_array($sql)) {
-											
-											echo "<option value='$isi[id_kategori]'>$isi[nm_kategori]</option>";
-											
-										}
-									
-									?>
-									</select>
-								</td>
-								</tr>
-						<tr>
-								<td>Headline</td>
-								<td>:</td>
-								<td><textarea name="headline" class="input-xlarge"></textarea></td>
-								</td>
-								</tr>
-						<tr>
-								<td>Isi Artikel</td>
-								<td>:</td>
-								<td><textarea name="isi" class="input-xlarge"></textarea></td>
-								</tr>
-						<tr>
-								<td>Pengirim</td>
-								<td>:</td>
-								<td><input type="text" value="<?php echo $nama_lengkap; ?>" name="pengirim" class="input-xlarge" maxlength="30"></td>
-								</tr>
-						<tr>
-								<td>Gambar</td>
-								<td>:</td>
-								<td><input type="file" name="gambar" class="input-xlarge" maxlength="120"></td>
-								</tr>
-						<tr>
-								<td></td>
-								<td colspan="2">
-								<input type="submit" name="input" class="btn btn-success" value="Input Artikel">
-								<a class="btn btn-danger" href="home.php?menu=artikel">Batal</a>
-								</td>
-								</tr>
-					</table>
-				</form>	
-</div>
 
+<div class="row">
+	<div class="span9">
+		<a class="btn btn-success" href="home.php?menu=artikel"><i class="icon icon-chevron-left"></i> Lihat Data</a>
+			<hr />
+			<h4 class="text-info"><i class="icon icon-pencil"></i> Input Artikel Baru</h4>
+					<form name="input" method="post" action="" class="orange" enctype="multipart/form-data">
+						<table class="table table-striped">
+							<tr>
+									<td>Judul Artikel</td>
+									<td>:</td>
+									<td><input type="text" name="judul" class="input-xlarge" maxlength="120"></td>
+									</tr>
+							<tr>
+									<td>Kategori</td>
+									<td>:</td>
+									<td>
+										<select name="kategori" class="input-xlarge">
+										<?php
+											$query = "SELECT id_kategori, nm_kategori FROM kategori ORDER BY nm_kategori";
+											$sql = mysqli_query($koneksi, $query);
+											while($isi = mysqli_fetch_array($sql)) {
+												
+												echo "<option value='$isi[id_kategori]'>$isi[nm_kategori]</option>";
+												
+											}
+										
+										?>
+										</select>
+									</td>
+									</tr>
+							<tr>
+									<td>Headline</td>
+									<td>:</td>
+									<td><textarea name="headline" class="input-xlarge"></textarea></td>
+									</td>
+									</tr>
+							<tr>
+									<td>Isi Artikel</td>
+									<td>:</td>
+									<td><textarea id="editor" class="admin-textarea" name="isi" class="input-xlarge"></textarea></td>
+									</tr>
+							<tr>
+									<td>Pengirim</td>
+									<td>:</td>
+									<td><input type="text" value="<?php echo $nama_lengkap; ?>" name="pengirim" class="input-xlarge" maxlength="30"></td>
+									</tr>
+							<tr>
+									<td>Gambar</td>
+									<td>:</td>
+									<td><input type="file" name="gambar" class="input-xlarge" maxlength="120"></td>
+									</tr>
+							<tr>
+									<td></td>
+									<td colspan="2">
+									<input type="submit" name="input" class="btn btn-success" value="Input Artikel">
+									<a class="btn btn-danger" href="home.php?menu=artikel">Batal</a>
+									</td>
+									</tr>
+						</table>
+					</form>	
+	</div>
+</div>
 
 
 
