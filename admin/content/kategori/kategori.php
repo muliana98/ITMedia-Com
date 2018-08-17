@@ -11,15 +11,17 @@
 						</tr>
 				<?php
 				include "koneksi.php";
+				include "/../fungsi_admin.php";
+				
 				$dataPerkategori = 5;
 				if(isset($_GET['kategori'])) {
 					
-					$nokategori = $_GET['kategori'];
+					$noPage = $_GET['kategori'];
 					
 				}
-				else $nokategori = 1;
+				else $noPage = 1;
 				
-				$offset = ($nokategori - 1) * $dataPerkategori;
+				$offset = ($noPage - 1) * $dataPerkategori;
 				
 					$kategoribaru = "SELECT * FROM kategori ORDER BY nm_kategori LIMIT $offset, $dataPerkategori";
 					$sql = mysqli_query($koneksi, $kategoribaru);
@@ -49,43 +51,14 @@
 					$result = mysqli_query($koneksi, $query1);
 					$data = mysqli_fetch_array($result);
 					$jumData = mysqli_real_escape_string($koneksi, trim($data['jumData']));
-					$jumkategori = ceil($jumData/$dataPerkategori);
+					$jumPage = ceil($jumData/$dataPerkategori);
 					
-					$showkategori = "";
+					$showPage = $jumPage;
 					
-					echo "<div class='td_pagination style3 col-sm-12'><div class='inner'>";
-					if($nokategori>1) {
-						
-						echo "<a class='btn btn-success' href='home.php?menu=kategori&&kategori=".($nokategori-1)."'><span><</span> </a>";
-						
-					}
-					for($kategori = 1; $kategori <= $jumkategori; $kategori++) {
-						
-						if((($kategori >= $nokategori - 3 ) && ($kategori <= $nokategori + 3)) || ($kategori == 1) || ($kategori == $jumkategori)) {
-							
-							if(($showkategori == 1) && ($kategori != 2)) echo "..";
-							if(($showkategori != ($jumkategori - 1)) && ($kategori == $jumkategori)) {
-								
-								echo "..";
-								
-							}
-							if($kategori == $nokategori) {
-								
-								echo "<a href='#' class='kategori-numbers btn btn-warning'><b>".$kategori."</b></a>";
-								
-							}
-							$showkategori = $kategori;
-						}
-						
-					}
+					$halaman_url = "home.php?menu=kategori&&kategori=";
+
 					
-					if($nokategori < $jumkategori) {
-						
-						echo "<a class='btn btn-success' href='home.php?menu=kategori&&kategori=".($nokategori+1)."'><span>></span></a></div></div>";
-						
-					}
-					echo "</div>";
-					echo "<h5>Total Record : $jumData records</h5>";
+					echo paginasi($halaman_url, $jumData, $jumPage, $noPage, $showPage);
 					
 					
 				?>
